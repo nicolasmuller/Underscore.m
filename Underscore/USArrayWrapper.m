@@ -164,6 +164,13 @@
     };
 }
 
+- (USArrayWrapper *(^)(NSArray *))difference;
+{
+    return ^USArrayWrapper *(NSArray *value) {
+        return self.without([USArrayWrapper wrap:value].flatten.unwrap);
+    };
+}
+
 - (USArrayWrapper *)shuffle
 {
     NSMutableArray *result = [self.array mutableCopy];
